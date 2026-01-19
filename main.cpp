@@ -11,11 +11,11 @@ int main() {
     string command;
     string note;
 
-    
+    // Boot Screen
     cout << "Booting MyMiniOS...\n";
     cout << "System Loading...\n\n";
 
-
+    // Password Check
     cout << "Enter Password: ";
     cin >> userPass;
 
@@ -26,15 +26,15 @@ int main() {
 
     cout << "Login Successful!\n\n";
 
-    cin.ignore(); 
+    cin.ignore(); // clear input buffer
 
-   
+    // MAIN LOOP (OS runs inside this loop)
     while (true) {
 
         cout << "MyMiniOS> ";
         getline(cin, command);
 
-        
+        // HELP COMMAND
         if (command == "help") {
             cout << "Available Commands:\n";
             cout << "help   - show commands\n";
@@ -44,20 +44,20 @@ int main() {
             cout << "exit   - close OS\n";
         }
 
-        
+        // TIME COMMAND
         else if (command == "time") {
             time_t now = time(0);
             cout << "Current Time: " << ctime(&now);
         }
 
-        
+        // NOTE COMMAND
         else if (command == "note") {
             cout << "Enter your note: ";
             getline(cin, note);
             cout << "Note Saved!\n";
         }
 
-
+        // CALCULATOR COMMAND
         else if (command == "calc") {
             int a, b;
             char op;
@@ -86,16 +86,16 @@ int main() {
             else
                 cout << "Invalid operator\n";
 
-            cin.ignore(); 
+            cin.ignore(); // clear buffer after calculator
         }
 
-        
+        // EXIT COMMAND
         else if (command == "exit") {
             cout << "Shutting down MyMiniOS...\n";
             break;
         }
 
-    
+        // WRONG COMMAND
         else {
             cout << "Invalid Command. Type help.\n";
         }
